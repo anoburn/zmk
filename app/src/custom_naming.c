@@ -18,5 +18,11 @@ static int bt_profile_changed_listener(const struct zmk_event_t *eh) {
     return ZMK_EV_EVENT_HANDLED;
 }
 
+static int set_name_at_boot(void) {
+    update_ble_name(zmk_ble_active_profile_index());
+    return 0;
+}
+
+SYS_INIT(set_name_at_boot, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
 ZMK_LISTENER(name_updater, bt_profile_changed_listener);
 ZMK_SUBSCRIPTION(name_updater, zmk_ble_active_profile_changed);
