@@ -5,7 +5,7 @@
 
 static void update_ble_name(uint8_t profile_index) {
     char new_name[16];
-    snprintf(new_name, sizeof(new_name), "The Paintbrush-%d", profile_index);
+    snprintf(new_name, sizeof(new_name), "Paintbrush-%d", profile_index);
     zmk_ble_set_device_name(new_name);
 }
 
