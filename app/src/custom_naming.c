@@ -1,5 +1,5 @@
 #include <zmk/event_manager.h>
-#include <zmk/events/bt_profile_changed.h>
+#include <zmk/events/ble_active_profile_changed.h>
 #include <zmk/ble.h>
 #include <stdio.h>
 
