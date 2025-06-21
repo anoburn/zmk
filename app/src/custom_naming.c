@@ -9,11 +9,14 @@ static void update_ble_name(uint8_t profile_index) {
     zmk_ble_set_device_name(new_name);
 }
 
-static int bt_profile_changed_listener(const struct zmk_event_header *eh) {
-    const struct bt_profile_changed_event *ev = cast_bt_profile_changed_event(eh);
+static int bt_profile_changed_listener(const struct zmk_event_t *eh) {
+    const struct zmk_ble_active_profile_changed *ev = as_zmk_ble_active_profile_changed(eh);
+    if (ev == NULL) {
+        return ZMK_EV_EVENT_BUBBLE;
+    }
     update_ble_name(ev->index);
-    return 0;
+    return ZMK_EV_EVENT_HANDLED;
 }
 
 ZMK_LISTENER(name_updater, bt_profile_changed_listener);
-ZMK_SUBSCRIPTION(name_updater, bt_profile_changed_event);
+ZMK_SUBSCRIPTION(name_updater, zmk_ble_active_profile_changed);
