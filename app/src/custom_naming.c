@@ -24,5 +24,5 @@ static int set_name_at_boot(void) {
 }
 
 SYS_INIT(set_name_at_boot, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
-ZMK_LISTENER(name_updater, bt_profile_changed_listener);
-ZMK_SUBSCRIPTION(name_updater, zmk_ble_active_profile_changed);
+//ZMK_LISTENER(name_updater, bt_profile_changed_listener);
+//ZMK_SUBSCRIPTION(name_updater, zmk_ble_active_profile_changed);
